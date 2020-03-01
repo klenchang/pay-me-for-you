@@ -1,0 +1,1 @@
+This folder is used to store the script that you use to customize table type.

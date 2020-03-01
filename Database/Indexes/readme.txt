@@ -1,0 +1,1 @@
+This folder is used to store some indexes that is not created while the table is created.
