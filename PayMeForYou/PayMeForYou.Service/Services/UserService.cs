@@ -1,32 +1,33 @@
 ﻿using PayMeForYou.Entity.Views.User;
 using PayMeForYou.Service.Services.Interface;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PayMeForYou.Service.Services
 {
     public class UserService : IUserService
     {
-        public void CreateUser(CreateUserView user)
+        public async Task CreateUserAsync(CreateUserView userView)
         {
             throw new System.NotImplementedException();
         }
 
-        public void UpdateUser(UpdateUserView user)
+        public async Task<UserView> GetUserAsync(int userId)
         {
             throw new System.NotImplementedException();
         }
 
-        public UserView GetUser(int userId)
+        public async Task<List<UserView>> GetUsersAsync(string userName, int merchantId)
         {
             throw new System.NotImplementedException();
         }
 
-        public List<UserView> GetUsers(string userName, int merchantId)
+        public async Task ResetPasswordAsync(string userId, string password)
         {
             throw new System.NotImplementedException();
         }
 
-        public void ResetPassword(string userId, string password)
+        public async Task UpdateUserAsync(UpdateUserView userView)
         {
             throw new System.NotImplementedException();
         }

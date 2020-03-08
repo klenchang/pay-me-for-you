@@ -1,14 +1,15 @@
 ﻿using PayMeForYou.Entity.RepositoryModules;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PayMeForYou.Service.Repositories.Interface
 {
-    internal interface IUserRepository
+    public interface IUserRepository
     {
-        public List<User> GetUsers(string userName, int merchantId);
-        public void ResetPassword(string userId, string password);
-        public void CreateUser(User user);
-        public void UpdateUser(User user);
-        public User GetUser(int userId);
+        public Task<List<User>> GetUsersAsync(string userName, int merchantId);
+        public Task ResetPasswordAsync(string userId, string password);
+        public Task CreateUserAsync(User user);
+        public Task UpdateUserAsync(User user);
+        public Task<User> GetUserAsync(int userId);
     }
 }

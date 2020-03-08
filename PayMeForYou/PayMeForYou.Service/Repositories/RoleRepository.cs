@@ -1,29 +1,36 @@
 ﻿using PayMeForYou.Entity.RepositoryModules;
 using PayMeForYou.Service.Repositories.Interface;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PayMeForYou.Service.Repositories
 {
-    internal class RoleRepository : IRoleRepository
+    public class RoleRepository : IRoleRepository
     {
-        public void CreateRole(Role role)
+        public async Task CreateRoleAsync(Role role)
         {
-            throw new System.NotImplementedException();
+            await Task.Run(() => throw new System.NotImplementedException());
         }
 
-        public void UpdateRole(Role role)
+        public async Task UpdateRoleAsync(Role role)
         {
-            throw new System.NotImplementedException();
+            await Task.Run(() => throw new System.NotImplementedException());
         }
 
-        public Role GetRole(int roleId)
+        public async Task<Role> GetRoleAsync(int roleId)
         {
-            throw new System.NotImplementedException();
+            return await Task.Run(() => new Role());
         }
 
-        public List<Role> GetRoles()
+        public async Task<List<Role>> GetRolesAsync()
         {
-            throw new System.NotImplementedException();
+            var list = new List<Role>
+            {
+                new Role{ Id = 1, RoleName = "Merchant", Description = "Merchant Admin", Permissions = "Merchant Permissions" },
+                new Role{ Id = 2, RoleName = "Affiliate", Description = "Affiliate Admin", Permissions = "Affiliate Permissions" },
+                new Role{ Id = 3, RoleName = "Manager", Description = "", Permissions = "Manager Permissions" },
+            };
+            return await Task.Run(() => list);
         }
     }
 }

@@ -1,32 +1,33 @@
 ﻿using PayMeForYou.Entity.RepositoryModules;
 using PayMeForYou.Service.Repositories.Interface;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PayMeForYou.Service.Repositories
 {
     internal class UserRepository : IUserRepository
     {
-        public void CreateUser(User user)
+        public async Task CreateUserAsync(User user)
         {
             throw new System.NotImplementedException();
         }
 
-        public void UpdateUser(User user)
+        public async Task<User> GetUserAsync(int userId)
         {
             throw new System.NotImplementedException();
         }
 
-        public User GetUser(int userId)
+        public async Task<List<User>> GetUsersAsync(string userName, int merchantId)
         {
             throw new System.NotImplementedException();
         }
 
-        public List<User> GetUsers(string userName, int merchantId)
+        public async Task ResetPasswordAsync(string userId, string password)
         {
             throw new System.NotImplementedException();
         }
 
-        public void ResetPassword(string userId, string password)
+        public async Task UpdateUserAsync(User user)
         {
             throw new System.NotImplementedException();
         }

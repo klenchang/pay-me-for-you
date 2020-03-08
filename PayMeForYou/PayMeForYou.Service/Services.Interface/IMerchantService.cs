@@ -1,14 +1,15 @@
 ﻿using PayMeForYou.Entity.Enums;
 using PayMeForYou.Entity.Views.Merchant;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PayMeForYou.Service.Services.Interface
 {
     public interface IMerchantService
     {
-        public List<MerchantView> GetMerchants(string merchantName, SettlementMethod settlementMethod, bool status);
-        public void CreateMerchant(CreateMerchantView merchant);
-        public void UpdateMerchant(UpdateMerchantView merchant);
-        public MerchantView GetMerchant(int merchantId);
+        public Task<List<MerchantView>> GetMerchantsAsync(string merchantName, SettlementMethod settlementMethod, bool status);
+        public Task CreateMerchantAsync(CreateMerchantView merchantView);
+        public Task UpdateMerchantAsync(UpdateMerchantView merchantView);
+        public Task<MerchantView> GetMerchantAsync(int merchantId);
     }
 }

@@ -1,14 +1,15 @@
 ﻿using PayMeForYou.Entity.Views.User;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PayMeForYou.Service.Services.Interface
 {
     public interface IUserService
     {
-        public List<UserView> GetUsers(string userName, int merchantId);
-        public void ResetPassword(string userId, string password);
-        public void CreateUser(CreateUserView user);
-        public void UpdateUser(UpdateUserView user);
-        public UserView GetUser(int userId);
+        public Task<List<UserView>> GetUsersAsync(string userName, int merchantId);
+        public Task ResetPasswordAsync(string userId, string password);
+        public Task CreateUserAsync(CreateUserView userView);
+        public Task UpdateUserAsync(UpdateUserView userView);
+        public Task<UserView> GetUserAsync(int userId);
     }
 }

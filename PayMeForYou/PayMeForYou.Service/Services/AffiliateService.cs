@@ -1,27 +1,28 @@
 ﻿using PayMeForYou.Entity.Views.Affiliate;
 using PayMeForYou.Service.Services.Interface;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PayMeForYou.Service.Services
 {
     public class AffiliateService : IAffiliateService
     {
-        public void CreateAffiliate(CreateAffiliateView affiliate)
+        public async Task CreateAffiliateAsync(CreateAffiliateView affiliateView)
         {
             throw new System.NotImplementedException();
         }
 
-        public void UpdateAffiliate(UpdateAffiliateView affiliate)
+        public async Task<AffiliateView> GetAffiliateAsync(int affiliateId)
         {
             throw new System.NotImplementedException();
         }
 
-        public AffiliateView GetAffiliate(int affiliateId)
+        public async Task<List<AffiliateView>> GetAffiliatesAsync(string affiliateName, bool status)
         {
             throw new System.NotImplementedException();
         }
 
-        public List<AffiliateView> GetAffiliates(string affiliateName, bool status)
+        public async Task UpdateAffiliateAsync(UpdateAffiliateView affiliateView)
         {
             throw new System.NotImplementedException();
         }

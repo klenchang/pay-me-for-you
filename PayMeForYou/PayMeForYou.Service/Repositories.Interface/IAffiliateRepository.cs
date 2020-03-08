@@ -1,13 +1,14 @@
 ﻿using PayMeForYou.Entity.RepositoryModules;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PayMeForYou.Service.Repositories.Interface
 {
-    internal interface IAffiliateRepository
+    public interface IAffiliateRepository
     {
-        public List<Affiliate> GetAffiliates(string affiliateName, bool status);
-        public void CreateAffiliate(Affiliate affiliate);
-        public void UpdateAffiliate(Affiliate affiliate);
-        public Affiliate GetAffiliate(int affiliateId);
+        public Task<List<Affiliate>> GetAffiliatesAsync(string affiliateName, bool status);
+        public Task CreateAffiliateAsync(Affiliate affiliate);
+        public Task UpdateAffiliateAsync(Affiliate affiliate);
+        public Task<Affiliate> GetAffiliateAsync(int affiliateId);
     }
 }

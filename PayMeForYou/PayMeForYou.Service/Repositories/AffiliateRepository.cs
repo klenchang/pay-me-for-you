@@ -1,27 +1,28 @@
 ﻿using PayMeForYou.Entity.RepositoryModules;
 using PayMeForYou.Service.Repositories.Interface;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PayMeForYou.Service.Repositories
 {
     internal class AffiliateRepository : IAffiliateRepository
     {
-        public void CreateAffiliate(Affiliate affiliate)
+        public async Task CreateAffiliateAsync(Affiliate affiliate)
         {
             throw new System.NotImplementedException();
         }
 
-        public void UpdateAffiliate(Affiliate affiliate)
+        public async Task<Affiliate> GetAffiliateAsync(int affiliateId)
         {
             throw new System.NotImplementedException();
         }
 
-        public Affiliate GetAffiliate(int affiliateId)
+        public async Task<List<Affiliate>> GetAffiliatesAsync(string affiliateName, bool status)
         {
             throw new System.NotImplementedException();
         }
 
-        public List<Affiliate> GetAffiliates(string affiliateName, bool status)
+        public async Task UpdateAffiliateAsync(Affiliate affiliate)
         {
             throw new System.NotImplementedException();
         }

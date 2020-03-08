@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PayMeForYou.Service.Repositories;
+using PayMeForYou.Service.Repositories.Interface;
+using PayMeForYou.Service.Services;
+using PayMeForYou.Service.Services.Interface;
 
 namespace PayMeForYou.Api.Service
 {
@@ -19,6 +23,8 @@ namespace PayMeForYou.Api.Service
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSingleton<IRoleRepository, RoleRepository>();
+            services.AddSingleton<IRoleService, RoleService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
