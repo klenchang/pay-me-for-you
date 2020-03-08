@@ -10,6 +10,8 @@ CREATE TABLE IF NOT EXISTS `paymeforyou`.`user` (
   `status` tinyint NOT NULL,
   `password` varchar(30) NOT NULL,
   `ip_white_list` text,
+  `Email` varchar(50),
+  `Phone` varchar(20),
   `created_by` varchar(30) NOT NULL,
   `created_time` timestamp(6) NOT NULL,
   PRIMARY KEY (`id`),
