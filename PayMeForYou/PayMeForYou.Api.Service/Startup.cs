@@ -1,15 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace PayMeForYou.Api.Service
 {
@@ -48,14 +41,14 @@ namespace PayMeForYou.Api.Service
                 //    name: "default",
                 //    pattern: "{controller}/{action}/{id?}",
                 //    defaults: new { controller = "Home", action = "Index" });
-                
+
                 endpoints.MapControllers();
                 //    endpoints.MapControllerRoute(
                 //    name: "areaRoute",
                 //    pattern: "{area:exists}/{controller}/{action}",
                 //defaults: new { action = "Index" });
 
-               
+
 
                 //endpoints.MapControllerRoute(
                 //    name: "api",

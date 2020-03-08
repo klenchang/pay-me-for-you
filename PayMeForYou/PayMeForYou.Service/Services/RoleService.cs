@@ -6,22 +6,22 @@ namespace PayMeForYou.Service.Services
 {
     public class RoleService : IRoleService
     {
-        public void CreateUser(CreateRoleView role)
+        public void CreateRole(CreateRoleView role)
         {
             throw new System.NotImplementedException();
         }
 
-        public void EditUser(EditRoleView role)
+        public void UpdateRole(UpdateRoleView role)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public RoleView GetRole(int roleId)
         {
             throw new System.NotImplementedException();
         }
 
         public List<RoleView> GetRoles()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public RoleView GetUser(int roleId)
         {
             throw new System.NotImplementedException();
         }

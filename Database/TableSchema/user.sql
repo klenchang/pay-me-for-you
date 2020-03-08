@@ -14,6 +14,8 @@ CREATE TABLE IF NOT EXISTS `paymeforyou`.`user` (
   `Phone` varchar(20),
   `created_by` varchar(30) NOT NULL,
   `created_time` timestamp(6) NOT NULL,
+  `updated_by` varchar(30),
+  `updated_time` timestamp(6),
   PRIMARY KEY (`id`),
   KEY `fk_user_merchant_idx` (`merchant_id`),
   KEY `fk_user_role_idx` (`role_id`),

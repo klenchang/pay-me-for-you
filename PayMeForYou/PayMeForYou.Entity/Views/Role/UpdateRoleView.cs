@@ -1,6 +1,6 @@
 ﻿namespace PayMeForYou.Entity.Views.Role
 {
-    public class EditRoleView
+    public class UpdateRoleView
     {
         public int Id { get; set; }
         public string RoleName { get; set; }

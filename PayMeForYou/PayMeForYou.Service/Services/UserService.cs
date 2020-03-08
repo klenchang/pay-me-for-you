@@ -11,7 +11,7 @@ namespace PayMeForYou.Service.Services
             throw new System.NotImplementedException();
         }
 
-        public void EditUser(EditUserView user)
+        public void UpdateUser(UpdateUserView user)
         {
             throw new System.NotImplementedException();
         }

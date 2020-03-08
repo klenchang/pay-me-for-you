@@ -6,8 +6,8 @@ namespace PayMeForYou.Service.Services.Interface
     public interface IRoleService
     {
         public List<RoleView> GetRoles();
-        public void CreateUser(CreateRoleView role);
-        public void EditUser(EditRoleView role);
-        public RoleView GetUser(int roleId);
+        public void CreateRole(CreateRoleView role);
+        public void UpdateRole(UpdateRoleView role);
+        public RoleView GetRole(int roleId);
     }
 }

@@ -12,7 +12,7 @@ namespace PayMeForYou.Service.Services
             throw new System.NotImplementedException();
         }
 
-        public void EditMerchant(EditMerchantView merchant)
+        public void UpdateMerchant(UpdateMerchantView merchant)
         {
             throw new System.NotImplementedException();
         }

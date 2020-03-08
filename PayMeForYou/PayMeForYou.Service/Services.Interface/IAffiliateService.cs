@@ -7,7 +7,7 @@ namespace PayMeForYou.Service.Services.Interface
     {
         public List<AffiliateView> GetAffiliates(string affiliateName, bool status);
         public void CreateAffiliate(CreateAffiliateView affiliate);
-        public void EditAffiliate(EditAffiliateView affiliate);
+        public void UpdateAffiliate(UpdateAffiliateView affiliate);
         public AffiliateView GetAffiliate(int affiliateId);
     }
 }

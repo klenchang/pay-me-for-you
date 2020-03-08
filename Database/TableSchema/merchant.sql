@@ -21,6 +21,8 @@ CREATE TABLE IF NOT EXISTS `paymeforyou`.`merchant` (
   `ip_white_list` text,
   `created_by` varchar(30) NOT NULL,
   `created_time` timestamp(6) NOT NULL,
+  `updated_by` varchar(30),
+  `updated_time` timestamp(6),
   PRIMARY KEY (`id`),
   KEY `fk_merchant_affiliate_idx` (`affiliate_id`),
   CONSTRAINT `fk_merchant_affiliate` FOREIGN KEY (`affiliate_id`) REFERENCES `affiliate` (`id`)

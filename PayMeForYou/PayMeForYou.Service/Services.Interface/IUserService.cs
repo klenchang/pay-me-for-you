@@ -8,7 +8,7 @@ namespace PayMeForYou.Service.Services.Interface
         public List<UserView> GetUsers(string userName, int merchantId);
         public void ResetPassword(string userId, string password);
         public void CreateUser(CreateUserView user);
-        public void EditUser(EditUserView user);
+        public void UpdateUser(UpdateUserView user);
         public UserView GetUser(int userId);
     }
 }

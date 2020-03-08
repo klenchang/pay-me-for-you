@@ -1,6 +1,6 @@
 ﻿namespace PayMeForYou.Entity.Views.User
 {
-    public class EditUserView
+    public class UpdateUserView
     {
         public int Id { get; set; }
         public string UserName { get; set; }

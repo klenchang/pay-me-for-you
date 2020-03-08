@@ -1,6 +1,6 @@
 ﻿namespace PayMeForYou.Entity.Views.Affiliate
 {
-    public class EditAffiliateView
+    public class UpdateAffiliateView
     {
         public int Id { get; set; }
         public string AffiliateName { get; set; }

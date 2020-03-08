@@ -11,7 +11,7 @@ namespace PayMeForYou.Service.Services
             throw new System.NotImplementedException();
         }
 
-        public void EditAffiliate(EditAffiliateView affiliate)
+        public void UpdateAffiliate(UpdateAffiliateView affiliate)
         {
             throw new System.NotImplementedException();
         }

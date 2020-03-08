@@ -2,7 +2,7 @@
 
 namespace PayMeForYou.Entity.Views.Merchant
 {
-    public class EditMerchantView
+    public class UpdateMerchantView
     {
         public int Id { get; set; }
         public string MerchantName { get; set; }

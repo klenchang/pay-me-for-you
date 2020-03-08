@@ -8,7 +8,7 @@ namespace PayMeForYou.Service.Services.Interface
     {
         public List<MerchantView> GetMerchants(string merchantName, SettlementMethod settlementMethod, bool status);
         public void CreateMerchant(CreateMerchantView merchant);
-        public void EditMerchant(EditMerchantView merchant);
+        public void UpdateMerchant(UpdateMerchantView merchant);
         public MerchantView GetMerchant(int merchantId);
     }
 }
