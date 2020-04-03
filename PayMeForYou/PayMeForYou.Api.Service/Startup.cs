@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PayMeForYou.Helper.Database;
+using PayMeForYou.Helper.Database.Interface;
 using PayMeForYou.Service.Repositories;
 using PayMeForYou.Service.Repositories.Interface;
 using PayMeForYou.Service.Services;
@@ -25,6 +27,7 @@ namespace PayMeForYou.Api.Service
             services.AddControllers();
             services.AddSingleton<IRoleRepository, RoleRepository>();
             services.AddSingleton<IRoleService, RoleService>();
+            services.AddTransient<DBHelperBase>(_ => new MySqlDBHelper(Configuration["ConnectionStrings:MySql"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

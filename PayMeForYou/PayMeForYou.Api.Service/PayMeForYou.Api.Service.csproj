@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PayMeForYou.Helper\PayMeForYou.Helper.csproj" />
     <ProjectReference Include="..\PayMeForYou.Service\PayMeForYou.Service.csproj" />
   </ItemGroup>
 
