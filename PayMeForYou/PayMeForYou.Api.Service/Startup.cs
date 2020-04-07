@@ -30,6 +30,12 @@ namespace PayMeForYou.Api.Service
             services.AddSingleton<IRoleService, RoleService>();
             services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<IUserService, UserService>();
+
+            //services.Configure<ApiBehaviorOptions>(options =>
+            //{
+            //    // To stop system original model validation mechanism. You can stop this to customize your response. 
+            //    options.SuppressModelStateInvalidFilter = true;
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

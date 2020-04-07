@@ -15,7 +15,7 @@ namespace PayMeForYou.Service.Services
         {
             _repository = roleRepository;
         }
-        public async Task CreateRoleAsync(CreateRoleView roleView)
+        public async Task<int> CreateRoleAsync(CreateRoleView roleView)
         {
             var role = new Role
             {
@@ -25,15 +25,13 @@ namespace PayMeForYou.Service.Services
                 CreatedBy = roleView.CreatedBy,
                 CreatedTime = DateTime.UtcNow
             };
-            await _repository.CreateRoleAsync(role);
+            return await _repository.CreateRoleAsync(role);
         }
-
         public async Task<RoleView> GetRoleAsync(int roleId)
         {
             var role = await _repository.GetRoleAsync(roleId);
             return role == null ? null : ConvertToView(role, 1);
         }
-
         public async Task<List<RoleView>> GetRolesAsync()
         {
             var roles = await _repository.GetRolesAsync();
@@ -43,8 +41,7 @@ namespace PayMeForYou.Service.Services
 
             return list;
         }
-
-        public async Task UpdateRoleAsync(UpdateRoleView roleView)
+        public async Task<int> UpdateRoleAsync(UpdateRoleView roleView)
         {
             var role = new Role
             {
@@ -55,9 +52,8 @@ namespace PayMeForYou.Service.Services
                 UpdatedBy = roleView.UpdatedBy,
                 UpdatedTime = DateTime.UtcNow
             };
-            await _repository.UpdateRoleAsync(role);
+            return await _repository.UpdateRoleAsync(role);
         }
-
         private RoleView ConvertToView(Role role, int rowNo)
         {
             return new RoleView

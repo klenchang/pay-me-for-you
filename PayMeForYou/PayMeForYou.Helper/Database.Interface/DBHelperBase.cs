@@ -12,11 +12,7 @@ namespace PayMeForYou.Helper.Database.Interface
         public async Task ExecuteReaderAsync(string cmdText, IEnumerable<DBReaderHandler> readerHandlers, IDbDataParameter[] parameters = null, CommandType cmdType = CommandType.Text)
         {
             using var conn = GetConnection();
-            using var cmd = conn.CreateCommand();
-            cmd.CommandText = cmdText;
-            cmd.CommandType = cmdType;
-            if (parameters != null)
-                cmd.Parameters.AddRange(parameters);
+            using var cmd = GetCommand(conn, cmdText, parameters, cmdType);
             using var reader = await cmd.ExecuteReaderAsync();
             foreach (var handler in readerHandlers)
             {
@@ -24,6 +20,26 @@ namespace PayMeForYou.Helper.Database.Interface
                     while (await reader.ReadAsync())
                         handler.Handler.Invoke(reader);
             }
+        }
+        public async Task<int> ExecuteNonQueryAsync(string cmdText, IDbDataParameter[] parameters = null, CommandType cmdType = CommandType.Text)
+        {
+            using var conn = GetConnection();
+            return await GetCommand(conn, cmdText, parameters, cmdType).ExecuteNonQueryAsync();
+        }
+        public async Task<object> ExecuteScalarAsync(string cmdText, IDbDataParameter[] parameters = null, CommandType cmdType = CommandType.Text)
+        { 
+            using var conn = GetConnection();
+            return await GetCommand(conn, cmdText, parameters, cmdType).ExecuteScalarAsync();
+        }
+        private DbCommand GetCommand(DbConnection conn, string cmdText, IDbDataParameter[] parameters = null, CommandType cmdType = CommandType.Text)
+        {
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = cmdText;
+            cmd.CommandType = cmdType;
+            if (parameters != null)
+                cmd.Parameters.AddRange(parameters);
+
+            return cmd;
         }
     }
 }

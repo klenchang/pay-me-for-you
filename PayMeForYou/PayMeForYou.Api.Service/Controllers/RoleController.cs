@@ -19,8 +19,10 @@ namespace PayMeForYou.Api.Service.Controllers
         public async Task<IActionResult> GetRolesAsync()
         {
             var list = await _service.GetRolesAsync();
-
-            return await Task.Run(() => Ok(list));
+            if (list.Count == 0)
+                return NoContent();
+            else
+                return Ok(list);
         }
 
         [HttpGet]
@@ -29,19 +31,26 @@ namespace PayMeForYou.Api.Service.Controllers
         {
             var role = await _service.GetRoleAsync(id);
             if (role == null)
-                return await Task.Run(() => new EmptyResult());
+                return NoContent();
+            else
+                return Ok(role);
+        }
 
-            return await Task.Run(() => Ok(role));
-        }
         [HttpPost]
-        public async Task CreateRole([FromBody] CreateRoleView role)
+        public async Task<IActionResult> CreateRole([FromBody] CreateRoleView role)
         {
-            await Task.Run(() => Ok());
+            var roidId = await _service.CreateRoleAsync(role);
+
+            return Created($"{Request.Scheme}://{Request.Host}/api/role/{roidId}", null);
         }
+
         [HttpPut]
-        public async Task UpdateRole([FromBody] UpdateRoleView role)
+        public async Task<IActionResult> UpdateRole([FromBody] UpdateRoleView role)
         {
-            await Task.Run(() => Ok());
+            if (await _service.UpdateRoleAsync(role) == 0)
+                return NoContent();
+            else
+                return Ok(new { role.Id });
         }
     }
 }

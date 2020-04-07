@@ -20,19 +20,48 @@ namespace PayMeForYou.Service.Repositories
         {
             _dbHelper = dbHelper;
         }
-        public async Task CreateRoleAsync(Role role)
+        public async Task<int> CreateRoleAsync(Role role)
         {
-            await Task.Run(() => throw new System.NotImplementedException());
+            string cmdText = @"INSERT INTO role (role_name, `description`, permissions, created_by, created_time, updated_by, updated_time)
+                               VALUES (@role_name, @description, @permissions, @created_by, @created_time, null, null);
+                               SELECT LAST_INSERT_ID();";
+            
+            var parameters = new List<MySqlParameter> 
+            { 
+                new MySqlParameter("role_name", MySqlDbType.VarChar) { Value = role.RoleName, Direction = ParameterDirection.Input },
+                new MySqlParameter("description", MySqlDbType.VarChar) { Value = role.Description, Direction = ParameterDirection.Input },
+                new MySqlParameter("permissions", MySqlDbType.VarChar) { Value = role.Permissions, Direction = ParameterDirection.Input },
+                new MySqlParameter("created_by", MySqlDbType.VarChar) { Value = role.CreatedBy, Direction = ParameterDirection.Input },
+                new MySqlParameter("created_time", MySqlDbType.Timestamp) { Value = role.CreatedTime, Direction = ParameterDirection.Input }
+            };
+            return Convert.ToInt32(await _dbHelper.ExecuteScalarAsync(cmdText, parameters: parameters.ToArray()));
         }
-        public async Task UpdateRoleAsync(Role role)
+        public async Task<int> UpdateRoleAsync(Role role)
         {
-            await Task.Run(() => throw new System.NotImplementedException());
+            string cmdText = @"UPDATE role 
+                               SET `description` = @description, 
+                                    role_name = @role_name, 
+                                    permissions = @permissions, 
+                                    updated_by = @updated_by, 
+                                    updated_time = @updated_time
+                               WHERE id = @id;";
+
+            var parameters = new List<MySqlParameter>
+            {
+                new MySqlParameter("id", MySqlDbType.Int32) { Value = role.Id, Direction = ParameterDirection.Input },
+                new MySqlParameter("role_name", MySqlDbType.VarChar) { Value = role.RoleName, Direction = ParameterDirection.Input },
+                new MySqlParameter("description", MySqlDbType.VarChar) { Value = role.Description, Direction = ParameterDirection.Input },
+                new MySqlParameter("permissions", MySqlDbType.VarChar) { Value = role.Permissions, Direction = ParameterDirection.Input },
+                new MySqlParameter("updated_by", MySqlDbType.VarChar) { Value = role.UpdatedBy, Direction = ParameterDirection.Input },
+                new MySqlParameter("updated_time", MySqlDbType.Timestamp) { Value = role.UpdatedTime, Direction = ParameterDirection.Input }
+            };
+            return await _dbHelper.ExecuteNonQueryAsync(cmdText, parameters: parameters.ToArray());
         }
         public async Task<Role> GetRoleAsync(int roleId)
         {
             var parameters = new List<MySqlParameter>
             {
-                new MySqlParameter { ParameterName = "id", DbType = DbType.Int32, Value = roleId, Direction = ParameterDirection.Input }
+                new MySqlParameter("id", MySqlDbType.Int32) { Value = roleId, Direction = ParameterDirection.Input }
             };
             var roles = await GetRolesAsync(parameters.ToArray());
 
