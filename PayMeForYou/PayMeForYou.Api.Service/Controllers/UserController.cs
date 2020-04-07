@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PayMeForYou.Service.Services.Interface;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PayMeForYou.Api.Service.Controllers
 {
@@ -7,12 +9,18 @@ namespace PayMeForYou.Api.Service.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        // GET: api/User
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IUserService _service;
+        public UserController(IUserService userService)
         {
-            
-            return new string[] { "value1", "value2" };
+            _service = userService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetUsersAsync()
+        {
+            var list = await _service.GetUsersAsync("", 1);
+
+            return await Task.Run(() => Ok(list));
         }
 
         // GET: api/User/5

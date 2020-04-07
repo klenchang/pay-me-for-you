@@ -25,9 +25,11 @@ namespace PayMeForYou.Api.Service
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddTransient<DBHelperBase>(_ => new MySqlDBHelper(Configuration["ConnectionStrings:MySql"]));
             services.AddSingleton<IRoleRepository, RoleRepository>();
             services.AddSingleton<IRoleService, RoleService>();
-            services.AddTransient<DBHelperBase>(_ => new MySqlDBHelper(Configuration["ConnectionStrings:MySql"]));
+            services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddSingleton<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

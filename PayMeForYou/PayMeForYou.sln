@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayMeForYou.Service", "PayM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayMeForYou.Helper", "PayMeForYou.Helper\PayMeForYou.Helper.csproj", "{9A256093-2338-483A-9187-8A23EBFE8545}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayMeForYou.Utility", "PayMeForYou.Utility\PayMeForYou.Utility.csproj", "{9B85AE38-18F7-444C-A8C8-043FD9B39862}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{9A256093-2338-483A-9187-8A23EBFE8545}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A256093-2338-483A-9187-8A23EBFE8545}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A256093-2338-483A-9187-8A23EBFE8545}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B85AE38-18F7-444C-A8C8-043FD9B39862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B85AE38-18F7-444C-A8C8-043FD9B39862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B85AE38-18F7-444C-A8C8-043FD9B39862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B85AE38-18F7-444C-A8C8-043FD9B39862}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{629CA556-3190-4221-860D-ECAEB421236E} = {CE811127-5FB8-4560-93C8-B7CE5DBE3CE8}
 		{E09CFF49-593F-47D4-AF6D-D0BC94705D18} = {CE811127-5FB8-4560-93C8-B7CE5DBE3CE8}
 		{9A256093-2338-483A-9187-8A23EBFE8545} = {CE811127-5FB8-4560-93C8-B7CE5DBE3CE8}
+		{9B85AE38-18F7-444C-A8C8-043FD9B39862} = {CE811127-5FB8-4560-93C8-B7CE5DBE3CE8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DE4932A3-20F1-4210-A99E-0770A7BB4AFF}

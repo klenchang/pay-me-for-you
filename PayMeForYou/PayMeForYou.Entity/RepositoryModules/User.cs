@@ -7,6 +7,7 @@ namespace PayMeForYou.Entity.RepositoryModules
         public int Id { get; set; }
         public string UserName { get; set; }
         public int MerchantId { get; set; }
+        public string MerchantName { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public int RoleId { get; set; }

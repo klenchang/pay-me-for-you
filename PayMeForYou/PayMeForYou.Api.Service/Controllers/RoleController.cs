@@ -9,16 +9,16 @@ namespace PayMeForYou.Api.Service.Controllers
     [ApiController]
     public class RoleController : ControllerBase
     {
-        IRoleService service;
+        private readonly IRoleService _service;
         public RoleController(IRoleService roleService)
         {
-            service = roleService;
+            _service = roleService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetRolesAsync()
         {
-            var list = await service.GetRolesAsync();
+            var list = await _service.GetRolesAsync();
 
             return await Task.Run(() => Ok(list));
         }
@@ -27,9 +27,9 @@ namespace PayMeForYou.Api.Service.Controllers
         [Route("{id}")]
         public async Task<IActionResult> GetRoleAsync(int id)
         {
-            var role = service.GetRoleAsync(id);
-            if (role == null) 
-                return await Task.Run(() => NotFound());
+            var role = await _service.GetRoleAsync(id);
+            if (role == null)
+                return await Task.Run(() => new EmptyResult());
 
             return await Task.Run(() => Ok(role));
         }

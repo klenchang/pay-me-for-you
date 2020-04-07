@@ -5,7 +5,7 @@ namespace PayMeForYou.Entity.Views.User
     public class UserView
     {
         public int RowNo { get; set; }
-        public int UserId { get; set; }
+        public int Id { get; set; }
         public string UserName { get; set; }
         public string MerchantName { get; set; }
         public string LastName { get; set; }
