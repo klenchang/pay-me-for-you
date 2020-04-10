@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PayMeForYou.Backend</title>
+    <link rel="stylesheet" href="~/lib/w3/dist/css/w3.css">
+    <link rel="stylesheet" href="~/lib/google/dist/css/font/font.css">
+    <link rel="stylesheet" href="~/lib/google/dist/css/icon/icon.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class="w3-light-grey">
+    <!-- Top container -->
+    <div class="w3-bar w3-top w3-black" style="z-index:4">
+        <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();" style="font-size:0px;"><i class="material-icons">menu</i></button>
+        <a class="w3-bar-item w3-left w3-large" asp-controller="Home" asp-action="Index">PayMeForYou</a>
+        <span class="w3-bar-item w3-right w3-hide-small">
+            <span>Welcome, <strong>Klen</strong></span>
+            <span>
+                <a class="w3-button w3-hover-none w3-hover-text-light-grey material-icons" title="User Profile" href="#" style="padding:0px 0px 0px 10px;">settings</a>
+                <a class="w3-button w3-hover-none w3-hover-text-light-grey material-icons" title="Change Password" href="#" style="padding:0px 0px 0px 10px;">lock</a>
+                <a class="w3-button w3-hover-none w3-hover-text-light-grey material-icons" title="Log Out" href="#" style="padding:0px 0px 0px 10px;">exit_to_app</a>
+            </span>
+        </span>
+    </div>
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar">
+        <div class="w3-container w3-row w3-hide-medium w3-hide-large">
+            <br />
+            <div class="w3-col s12 w3-bar">
+                <div>
+                    <span>Welcome, <strong>Klen</strong></span>
+                </div>
+                <div style="font-size:0px;">
+                    <a href="#" class="w3-bar-item w3-button material-icons" title="User Profile">settings</a>
+                    <a href="#" class="w3-bar-item w3-button material-icons" title="Change Password">lock</a>
+                    <a href="#" class="w3-bar-item w3-button material-icons" title="Log Out">exit_to_app</a>
+                </div>
+            </div>
+        </div>
+        <div class="w3-bar-block">
+            <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="material-icons">close</i><span>Close Menu</span></a>
+            <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Overview</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Views</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
+        </div>
+    </nav>
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:300px; margin-top:43px;">
+        @RenderBody()
+        <!-- Footer -->
+        <footer class="w3-container w3-padding-16 w3-light-grey">
+            <p>&copy; 2020 - PayMeForYou.Backend - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></p>
+        </footer>
+        <!-- End page content -->
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
