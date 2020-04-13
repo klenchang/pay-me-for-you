@@ -1,0 +1,29 @@
+﻿@using System.Linq;
+@model List<MenuViewModel>;
+@{
+    if (Model.Count > 0)
+    {
+        var categories = Model.GroupBy(x => x.CategoryName).Select(c => c.First().CategoryName);
+        foreach (var category in categories)
+        {
+            var functions = Model.Where(x => x.CategoryName == category && !x.IsRoot);
+            if (functions.Count() <= 0)
+            {
+                var root = Model.First(x => x.CategoryName == category && x.IsRoot);
+                <a class="w3-bar-item w3-button w3-padding" asp-controller="@root.ControllerName" asp-action="@root.ActionName">@root.CategoryName</a>
+            }
+            else
+            {
+                <div>
+                    <button class="w3-button w3-block w3-left-align" onclick="switchSideBarItemDetail(this)">@category</button>
+                    <div class="w3-hide w3-white w3-card">
+                        @foreach (var function in functions)
+                        {
+                            <a class="w3-bar-item w3-button" asp-controller="@function.ControllerName" asp-action="@function.ActionName">&nbsp; @function.FunctionName</a>
+                        }
+                    </div>
+                </div>
+            }
+        }
+    }
+}

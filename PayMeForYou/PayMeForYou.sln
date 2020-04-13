@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayMeForYou.Helper", "PayMe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayMeForYou.Utility", "PayMeForYou.Utility\PayMeForYou.Utility.csproj", "{9B85AE38-18F7-444C-A8C8-043FD9B39862}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayMeForYou.Backend", "PayMeForYou.Backend\PayMeForYou.Backend.csproj", "{7ED43AAB-C3EA-49A7-A203-F5F26F75291C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayMeForYou.Backend", "PayMeForYou.Backend\PayMeForYou.Backend.csproj", "{7ED43AAB-C3EA-49A7-A203-F5F26F75291C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
