@@ -12,13 +12,13 @@ namespace PayMeForYou.Backend.Controllers
         [HttpGet]
         public IActionResult Management()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpGet]
         public IActionResult Create(CreateRoleView view)
         {
-            return View(view);
+            return PartialView(view);
         }
     }
 }

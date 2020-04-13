@@ -11,37 +11,37 @@ namespace PayMeForYou.Backend.Controllers
         [HttpGet]
         public IActionResult Profile()
         {
-            return View();
+            return PartialView();
         }
         
         [HttpGet]
         public IActionResult Password()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpGet]
         public IActionResult Logout()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpGet]
         public IActionResult Management()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpGet]
         public IActionResult CustomerControl()
         {
-            return View();
+            return PartialView();
         }
     }
 }
