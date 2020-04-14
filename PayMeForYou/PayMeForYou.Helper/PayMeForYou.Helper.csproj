@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PayMeForYou.Entity\PayMeForYou.Entity.csproj" />
+    <ProjectReference Include="..\PayMeForYou.Utility\PayMeForYou.Utility.csproj" />
   </ItemGroup>
 
 </Project>
