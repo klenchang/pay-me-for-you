@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PayMeForYou.Api.Service.Library\PayMeForYou.Api.Service.Library.csproj" />
     <ProjectReference Include="..\PayMeForYou.Helper\PayMeForYou.Helper.csproj" />
-    <ProjectReference Include="..\PayMeForYou.Service\PayMeForYou.Service.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,8 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
+using PayMeForYou.Api.Service.Library.Repositories.Interface;
 using PayMeForYou.Entity.Entities;
 using PayMeForYou.Entity.RepositoryModules;
 using PayMeForYou.Helper.Database.Interface;
-using PayMeForYou.Service.Repositories.Interface;
 using PayMeForYou.Utility.Database;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PayMeForYou.Service.Repositories
+namespace PayMeForYou.Api.Service.Library.Repositories
 {
     public class RoleRepository : IRoleRepository
     {

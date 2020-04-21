@@ -1,9 +1,9 @@
-﻿using PayMeForYou.Entity.Views.Affiliate;
-using PayMeForYou.Service.Services.Interface;
+﻿using PayMeForYou.Api.Service.Library.Services.Interface;
+using PayMeForYou.Entity.Views.Affiliate;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace PayMeForYou.Service.Services
+namespace PayMeForYou.Api.Service.Library.Services
 {
     public class AffiliateService : IAffiliateService
     {

@@ -1,12 +1,12 @@
-﻿using PayMeForYou.Entity.RepositoryModules;
+﻿using PayMeForYou.Api.Service.Library.Repositories.Interface;
+using PayMeForYou.Api.Service.Library.Services.Interface;
+using PayMeForYou.Entity.RepositoryModules;
 using PayMeForYou.Entity.Views.Role;
-using PayMeForYou.Service.Repositories.Interface;
-using PayMeForYou.Service.Services.Interface;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace PayMeForYou.Service.Services
+namespace PayMeForYou.Api.Service.Library.Services
 {
     public class RoleService : IRoleService
     {

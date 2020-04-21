@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PayMeForYou.Api.Service.Library.Repositories;
+using PayMeForYou.Api.Service.Library.Repositories.Interface;
+using PayMeForYou.Api.Service.Library.Services;
+using PayMeForYou.Api.Service.Library.Services.Interface;
 using PayMeForYou.Helper.Database;
 using PayMeForYou.Helper.Database.Interface;
-using PayMeForYou.Service.Repositories;
-using PayMeForYou.Service.Repositories.Interface;
-using PayMeForYou.Service.Services;
-using PayMeForYou.Service.Services.Interface;
 
 namespace PayMeForYou.Api.Service
 {

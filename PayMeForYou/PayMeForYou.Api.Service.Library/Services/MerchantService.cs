@@ -1,10 +1,10 @@
-﻿using PayMeForYou.Entity.Enums;
+﻿using PayMeForYou.Api.Service.Library.Services.Interface;
+using PayMeForYou.Entity.Enums;
 using PayMeForYou.Entity.Views.Merchant;
-using PayMeForYou.Service.Services.Interface;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace PayMeForYou.Service.Services
+namespace PayMeForYou.Api.Service.Library.Services
 {
     public class MerchantService : IMerchantService
     {

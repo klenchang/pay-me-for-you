@@ -1,13 +1,13 @@
-﻿using PayMeForYou.Entity.Entities;
+﻿using PayMeForYou.Api.Service.Library.Repositories.Interface;
+using PayMeForYou.Entity.Entities;
 using PayMeForYou.Entity.RepositoryModules;
 using PayMeForYou.Helper.Database.Interface;
-using PayMeForYou.Service.Repositories.Interface;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 
-namespace PayMeForYou.Service.Repositories
+namespace PayMeForYou.Api.Service.Library.Repositories
 {
     public class UserRepository : IUserRepository
     {

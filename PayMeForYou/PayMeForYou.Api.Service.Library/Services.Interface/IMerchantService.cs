@@ -3,7 +3,7 @@ using PayMeForYou.Entity.Views.Merchant;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace PayMeForYou.Service.Services.Interface
+namespace PayMeForYou.Api.Service.Library.Services.Interface
 {
     public interface IMerchantService
     {

@@ -1,9 +1,9 @@
-﻿using PayMeForYou.Entity.RepositoryModules;
-using PayMeForYou.Service.Repositories.Interface;
+﻿using PayMeForYou.Api.Service.Library.Repositories.Interface;
+using PayMeForYou.Entity.RepositoryModules;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace PayMeForYou.Service.Repositories
+namespace PayMeForYou.Api.Service.Library.Repositories
 {
     internal class AffiliateRepository : IAffiliateRepository
     {

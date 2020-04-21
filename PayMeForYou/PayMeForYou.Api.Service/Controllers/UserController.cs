@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PayMeForYou.Service.Services.Interface;
-using System.Collections.Generic;
+using PayMeForYou.Api.Service.Library.Services.Interface;
 using System.Threading.Tasks;
 
 namespace PayMeForYou.Api.Service.Controllers

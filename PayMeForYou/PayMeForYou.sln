@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayMeForYou.Api.Service", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayMeForYou.Entity", "PayMeForYou.Entity\PayMeForYou.Entity.csproj", "{629CA556-3190-4221-860D-ECAEB421236E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayMeForYou.Service", "PayMeForYou.Service\PayMeForYou.Service.csproj", "{E09CFF49-593F-47D4-AF6D-D0BC94705D18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayMeForYou.Api.Service.Library", "PayMeForYou.Api.Service.Library\PayMeForYou.Api.Service.Library.csproj", "{E09CFF49-593F-47D4-AF6D-D0BC94705D18}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayMeForYou.Helper", "PayMeForYou.Helper\PayMeForYou.Helper.csproj", "{9A256093-2338-483A-9187-8A23EBFE8545}"
 EndProject

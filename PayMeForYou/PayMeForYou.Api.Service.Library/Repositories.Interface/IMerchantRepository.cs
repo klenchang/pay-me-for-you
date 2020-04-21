@@ -3,7 +3,7 @@ using PayMeForYou.Entity.RepositoryModules;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace PayMeForYou.Service.Repositories.Interface
+namespace PayMeForYou.Api.Service.Library.Repositories.Interface
 {
     public interface IMerchantRepository
     {
