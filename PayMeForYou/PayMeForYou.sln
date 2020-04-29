@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayMeForYou.Utility", "PayM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayMeForYou.Backend", "PayMeForYou.Backend\PayMeForYou.Backend.csproj", "{7ED43AAB-C3EA-49A7-A203-F5F26F75291C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayMeForYou.Backend.Library", "PayMeForYou.Backend.Library\PayMeForYou.Backend.Library.csproj", "{0EE3744B-9757-48FB-B101-1CB854A03256}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{7ED43AAB-C3EA-49A7-A203-F5F26F75291C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7ED43AAB-C3EA-49A7-A203-F5F26F75291C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7ED43AAB-C3EA-49A7-A203-F5F26F75291C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EE3744B-9757-48FB-B101-1CB854A03256}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EE3744B-9757-48FB-B101-1CB854A03256}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EE3744B-9757-48FB-B101-1CB854A03256}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EE3744B-9757-48FB-B101-1CB854A03256}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{9A256093-2338-483A-9187-8A23EBFE8545} = {CE811127-5FB8-4560-93C8-B7CE5DBE3CE8}
 		{9B85AE38-18F7-444C-A8C8-043FD9B39862} = {CE811127-5FB8-4560-93C8-B7CE5DBE3CE8}
 		{7ED43AAB-C3EA-49A7-A203-F5F26F75291C} = {14F432C8-0373-4075-B40F-EAAB4E4479E2}
+		{0EE3744B-9757-48FB-B101-1CB854A03256} = {CE811127-5FB8-4560-93C8-B7CE5DBE3CE8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DE4932A3-20F1-4210-A99E-0770A7BB4AFF}

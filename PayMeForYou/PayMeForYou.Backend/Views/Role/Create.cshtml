@@ -1,7 +1,42 @@
-﻿
-@{
-    ViewData["Title"] = "Create";
+﻿@using PayMeForYou.Entity.Views.Role;
+@model CreateRoleView;
+
+<header class="w3-container w3-teal w3-center w3-hide-small">
+    <h5>Create Role</h5>
+</header>
+@using (Html.BeginForm(FormMethod.Post, new { @class = "w3-container" }))
+{
+    <div class="w3-row w3-section">
+        @Html.LabelFor(m => m.RoleName, new { @class = "w3-text-teal font-bold w3-col" })
+        @Html.TextBoxFor(m => m.RoleName, new { @class = "w3-input w3-border w3-light-grey w3-half", required = "required" })
+        @*@Html.ValidationMessageFor(x => x.RoleName, null, new { @class = "" })*@
+    </div>
+    <div class="w3-row w3-section">
+        @Html.LabelFor(m => m.Description, new { @class = "w3-text-teal font-bold w3-col" })
+        @Html.TextBoxFor(m => m.Description, new { @class = "w3-input w3-border w3-light-grey w3-half" })
+    </div>
+    @if (Model.PermissionSections != null && Model.PermissionSections.Count > 0)
+    {
+        @for (int x = 0; x < Model.PermissionSections.Count; x++)
+        {
+            <fieldset class="w3-section">
+                <legend>@Model.PermissionSections[x].SectionName</legend>
+                <input type="hidden" asp-for="@Model.PermissionSections[x].SectionName" />
+                @for (var i = 0; i < Model.PermissionSections[x].Permissions.Count; i++)
+                {
+                    <div class="w3-row w3-section w3-col l4 m4 s12" style="white-space: nowrap;">
+                        <input class="w3-check" type="checkbox" asp-for="@Model.PermissionSections[x].Permissions[i].Selected" />
+                        <label asp-for="@Model.PermissionSections[x].Permissions[i].Selected">@Model.PermissionSections[x].Permissions[i].Text</label>
+                        <input type="hidden" asp-for="@Model.PermissionSections[x].Permissions[i].Id" />
+                        <input type="hidden" asp-for="@Model.PermissionSections[x].Permissions[i].Text" />
+                    </div>
+                }
+            </fieldset>
+        }
+    }
+    <div class="w3-row w3-section">
+        <div class="w3-quarter w3-container"></div>
+        <button class="w3-btn w3-blue-grey w3-half">Create</button>
+        <div class="w3-quarter w3-container"></div>
+    </div>
 }
-
-<h1>Create</h1>
-

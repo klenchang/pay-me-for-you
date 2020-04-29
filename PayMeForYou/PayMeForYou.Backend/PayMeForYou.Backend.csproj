@@ -15,7 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PayMeForYou.Backend.Library\PayMeForYou.Backend.Library.csproj" />
     <ProjectReference Include="..\PayMeForYou.Entity\PayMeForYou.Entity.csproj" />
+    <ProjectReference Include="..\PayMeForYou.Helper\PayMeForYou.Helper.csproj" />
   </ItemGroup>
 
 </Project>

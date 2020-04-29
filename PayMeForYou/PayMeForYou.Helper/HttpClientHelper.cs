@@ -24,6 +24,10 @@ namespace PayMeForYou.Helper
         public HttpClientHelper(string baseAddress)
         {
             _baseAddress = baseAddress;
+            // default timeout after 10 seconds
+            Timeout = 10;
+            // default charset
+            CharSet = Encoding.UTF8.HeaderName;
         }
         public async Task<HttpResponseMessage> SubmitAsync()
         {
@@ -56,7 +60,7 @@ namespace PayMeForYou.Helper
             SetFormContentType();
             var contentType = FormContent?.Headers.ContentType.ToString() ?? "null";
 
-            return $"\r\nUrl:{Url}\r\nTimeout:{Timeout} sec\r\nSubmit Method:{FormMethod.Method}\r\nHeader:{header}\r\nContentType:{contentType}\r\nContent:{content}";
+            return $"\r\nFullUrl:{_baseAddress}{Url}\r\nTimeout:{Timeout} sec\r\nSubmit Method:{FormMethod.Method}\r\nHeader:{header}\r\nContentType:{contentType}\r\nContent:{content}";
         }
         public Func<string, string> BodyLogFilter { get; set; }
         public Func<string, string> HeaderLogFilter { get; set; }
