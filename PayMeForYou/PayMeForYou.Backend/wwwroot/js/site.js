@@ -29,20 +29,21 @@ $(".partial-load").click(event => {
     var url = $(event.target).attr("href");
     $('#divMainBody').load(url);
     if ($("#btnMenu").css("display") === 'block') {
-        w3_close();
+        switchMenu();
     }
 });
 
-//$("form").submit(function(e) {
-//    console.log(e);
-//    var form = $(this);
-//    $.ajax({
-//        url: form.attr('action'),
-//        type: form.attr('method'),
-//        data: form.serialize(), // data to be submitted
-//        success: function(response) {
-//            alert(response); // do what you like with the response
-//        }
-//    });
-//    return false;
-//});
+function submitAjax(form, successEvent, errorEvent) {
+    event.preventDefault();
+    $.ajax({
+        url: form.attr('action'),
+        type: form.attr('method'),
+        data: form.serialize(), // data to be submitted
+        success: function(response) {
+            successEvent(response); // do what you like with the response
+        },
+        error: function(response) {
+            errorEvent(response);
+        }
+    });
+}

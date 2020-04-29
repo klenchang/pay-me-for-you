@@ -36,7 +36,14 @@
     }
     <div class="w3-row w3-section">
         <div class="w3-quarter w3-container"></div>
-        <button class="w3-btn w3-blue-grey w3-half">Create</button>
+        <input type="submit" class="w3-btn w3-blue-grey w3-half" value="Create" />
         <div class="w3-quarter w3-container"></div>
     </div>
 }
+<script type="text/javascript">
+    $("form").submit(function () {
+        var successEvent = response => alert(response);
+        var errorEvent = response => alert(response);
+        submitAjax($(this), successEvent, errorEvent);
+    });
+</script>

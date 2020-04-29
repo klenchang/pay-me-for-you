@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PayMeForYou.Backend.Library.Services;
+using PayMeForYou.Backend.Library.Services.Interface;
 using PayMeForYou.Helper;
 
 namespace PayMeForYou.Backend
@@ -26,6 +28,7 @@ namespace PayMeForYou.Backend
         {
             services.AddControllersWithViews();
             services.AddTransient(_ => new HttpClientHelper(Configuration["ApiServiceUrl"]));
+            services.AddSingleton<IRoleService, RoleService>();
 
         }
 

@@ -4,4 +4,13 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PayMeForYou.Entity\PayMeForYou.Entity.csproj" />
+    <ProjectReference Include="..\PayMeForYou.Helper\PayMeForYou.Helper.csproj" />
+  </ItemGroup>
+
 </Project>

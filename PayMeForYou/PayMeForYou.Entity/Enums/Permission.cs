@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace PayMeForYou.Entity.Enums
+﻿namespace PayMeForYou.Entity.Enums
 {
     public enum Permission
     {
@@ -17,12 +15,21 @@ namespace PayMeForYou.Entity.Enums
         VIEW_ROLE,
         UPDATE_TRANSACTION,
         VIEW_FUNDOUT_TRANSACTION,
+        VIEW_FUNDIN_TRANSACTION,
+        MANUAL_CREATE_FUNDIN_TRANSACTION,
+        VIEW_BANK_TRANSACTION_STATEMENT,
         TOP_UP,
         BALANCE_ADJUSTMENT,
         VIEW_SETTLEMENT_REPORT,
         VIEW_FUNDOUT_REPORT,
         VIEW_FUNDIN_REPORT,
         VIEW_MERCHANT_SUMMARY_REPORT,
-        VIEW_FUND_STATEMENT
+        VIEW_FUND_STATEMENT,
+        VIEW_SETTLEMENT_TRANSACTION,
+        UPDATE_SETTLEMENT_TRANSACTION,
+        CREATE_SETTLEMENT_TRANSACTION,
+        VIEW_TOP_UP_TRANSACTION,
+        VIEW_FUND_ACCOUNT,
+        VIEW_TESTING_TOOL
     }
 }

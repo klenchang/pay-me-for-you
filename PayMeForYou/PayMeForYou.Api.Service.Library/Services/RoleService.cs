@@ -1,6 +1,7 @@
 ﻿using PayMeForYou.Api.Service.Library.Repositories.Interface;
 using PayMeForYou.Api.Service.Library.Services.Interface;
 using PayMeForYou.Entity.RepositoryModules;
+using PayMeForYou.Entity.RequestModules.Role;
 using PayMeForYou.Entity.Views.Role;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace PayMeForYou.Api.Service.Library.Services
         {
             _repository = roleRepository;
         }
-        public async Task<int> CreateRoleAsync(CreateRoleView roleView)
+        public async Task<int> CreateRoleAsync(CreateRoleRequest roleView)
         {
             var role = new Role
             {

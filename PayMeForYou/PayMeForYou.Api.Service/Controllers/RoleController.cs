@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PayMeForYou.Api.Service.Library.Services.Interface;
+using PayMeForYou.Entity.RequestModules.Role;
 using PayMeForYou.Entity.Views.Role;
 using System.Threading.Tasks;
 
@@ -37,7 +38,7 @@ namespace PayMeForYou.Api.Service.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateRole([FromBody] CreateRoleView role)
+        public async Task<IActionResult> CreateRole([FromBody] CreateRoleRequest role)
         {
             var roidId = await _service.CreateRoleAsync(role);
 

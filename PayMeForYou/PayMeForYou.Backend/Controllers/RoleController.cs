@@ -1,12 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PayMeForYou.Entity.Enums;
+using PayMeForYou.Backend.Library.Services.Interface;
 using PayMeForYou.Entity.Views.Role;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PayMeForYou.Backend.Controllers
 {
     public class RoleController : Controller
     {
+        private readonly IRoleService _service;
+        public RoleController(IRoleService roleService)
+        {
+            _service = roleService;
+        }
+
         [HttpGet]
         public IActionResult Management()
         {
@@ -18,38 +24,18 @@ namespace PayMeForYou.Backend.Controllers
         {
             var view = new CreateRoleView
             {
-                PermissionSections = new List<PermissionSection>
-                {
-                    new PermissionSection
-                    {
-                        SectionName = "Merchant",
-                        Permissions = new List<Entity.Entities.CustomCheckBoxItem>
-                        {
-                            new Entity.Entities.CustomCheckBoxItem { Id = Permission.CREATE_MERCHANT.ToString(), Text = Permission.CREATE_MERCHANT.ToString(), Selected = false },
-                            new Entity.Entities.CustomCheckBoxItem { Id = Permission.UPDATE_MERCHANT.ToString(), Text = Permission.UPDATE_MERCHANT.ToString(), Selected = false },
-                            new Entity.Entities.CustomCheckBoxItem { Id = Permission.VIEW_MERCHANT.ToString(), Text = Permission.VIEW_MERCHANT.ToString(), Selected = false }
-                        }
-                    },
-                    new PermissionSection
-                    {
-                        SectionName = "User",
-                        Permissions = new List<Entity.Entities.CustomCheckBoxItem>
-                        {
-                            new Entity.Entities.CustomCheckBoxItem { Id = Permission.CREATE_USER.ToString(), Text = Permission.CREATE_USER.ToString(), Selected = false },
-                            new Entity.Entities.CustomCheckBoxItem { Id = Permission.UPDATE_USER.ToString(), Text = Permission.UPDATE_USER.ToString(), Selected = false },
-                            new Entity.Entities.CustomCheckBoxItem { Id = Permission.VIEW_USER.ToString(), Text = Permission.VIEW_USER.ToString(), Selected = false }
-                        }
-                    }
-                }
+                PermissionSections = _service.GetAllPermissionSections()
             };
 
             return PartialView(view);
         }
 
         [HttpPost]
-        public IActionResult Create(CreateRoleView view)
+        public async Task<IActionResult> Create(CreateRoleView view)
         {
-            return PartialView(view);
+            await _service.CreateRoleAsync(view);
+
+            return Content("success");
         }
     }
 }
