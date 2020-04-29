@@ -1,0 +1,12 @@
+﻿.w3-top a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.top-bar-user-action > a {
+    padding: 0px 0px 0px 10px;
+}
+
+.font-bold {
+    font-weight: bold;
+}
