@@ -10,3 +10,8 @@
 .font-bold {
     font-weight: bold;
 }
+
+.required:before {
+    content: "* ";
+    color: red;
+}

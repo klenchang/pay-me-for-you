@@ -38,7 +38,7 @@ namespace PayMeForYou.Api.Service.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateRole([FromBody] CreateRoleRequest role)
+        public async Task<IActionResult> CreateRoleAsync([FromBody] CreateRoleRequest role)
         {
             var roidId = await _service.CreateRoleAsync(role);
 
@@ -46,7 +46,7 @@ namespace PayMeForYou.Api.Service.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateRole([FromBody] UpdateRoleView role)
+        public async Task<IActionResult> UpdateRoleAsync([FromBody] UpdateRoleRequest role)
         {
             if (await _service.UpdateRoleAsync(role) == 0)
                 return NoContent();

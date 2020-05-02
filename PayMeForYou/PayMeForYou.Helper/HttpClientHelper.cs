@@ -46,6 +46,8 @@ namespace PayMeForYou.Helper
             {
                 "get" => await client.GetAsync(Url),
                 "post" => await client.PostAsync(Url, FormContent),
+                "put" => await client.PutAsync(Url, FormContent),
+                "delete" => await client.DeleteAsync(Url),
                 _ => throw new ArgumentOutOfRangeException("FormMethod"),
             };
         }

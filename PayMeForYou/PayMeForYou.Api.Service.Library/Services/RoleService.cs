@@ -42,7 +42,7 @@ namespace PayMeForYou.Api.Service.Library.Services
 
             return list;
         }
-        public async Task<int> UpdateRoleAsync(UpdateRoleView roleView)
+        public async Task<int> UpdateRoleAsync(UpdateRoleRequest roleView)
         {
             var role = new Role
             {

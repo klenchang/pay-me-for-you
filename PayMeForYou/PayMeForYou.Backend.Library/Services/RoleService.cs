@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
+using PayMeForYou.Backend.Library.Common;
 using PayMeForYou.Backend.Library.Services.Interface;
 using PayMeForYou.Entity.Entities;
 using PayMeForYou.Entity.Enums;
 using PayMeForYou.Entity.RequestModules.Role;
 using PayMeForYou.Entity.Views.Role;
-using PayMeForYou.Helper;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -14,13 +14,17 @@ namespace PayMeForYou.Backend.Library.Services
 {
     public class RoleService : IRoleService
     {
-        private readonly HttpClientHelper _httpClientHelper;
-        public RoleService(HttpClientHelper httpClientHelper)
+        private const string _baseUrl = "api/role";
+        private readonly RequestHelper _requestHelper;
+        public RoleService(RequestHelper requestHelper)
         {
-            _httpClientHelper = httpClientHelper;
+            _requestHelper = requestHelper;
         }
+
+        #region Permission Function
         public List<PermissionSection> GetAllPermissionSections(string permissions = null)
         {
+            permissions = permissions != null ? $",{permissions}," : "";
             return new List<PermissionSection>
             {
                 new PermissionSection
@@ -28,11 +32,11 @@ namespace PayMeForYou.Backend.Library.Services
                     SectionName = "Merchant",
                     Permissions = new List<CustomCheckBoxItem>
                     {
-                        new CustomCheckBoxItem { Id = Permission.CREATE_MERCHANT.ToString(), Text = Permission.CREATE_MERCHANT.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.UPDATE_MERCHANT.ToString(), Text = Permission.UPDATE_MERCHANT.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.VIEW_MERCHANT.ToString(), Text = Permission.VIEW_MERCHANT.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.VIEW_INTEGRATION.ToString(), Text = Permission.VIEW_INTEGRATION.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.UPDATE_INTEGRATION.ToString(), Text = Permission.UPDATE_INTEGRATION.ToString(), Selected = false }
+                        GetPermissionCheckBoxItem(Permission.CREATE_MERCHANT, permissions),
+                        GetPermissionCheckBoxItem(Permission.UPDATE_MERCHANT, permissions),
+                        GetPermissionCheckBoxItem(Permission.VIEW_MERCHANT, permissions),
+                        GetPermissionCheckBoxItem(Permission.VIEW_INTEGRATION, permissions),
+                        GetPermissionCheckBoxItem(Permission.UPDATE_INTEGRATION, permissions)
                     }
                 },
                 new PermissionSection
@@ -40,9 +44,9 @@ namespace PayMeForYou.Backend.Library.Services
                     SectionName = "User",
                     Permissions = new List<CustomCheckBoxItem>
                     {
-                        new CustomCheckBoxItem { Id = Permission.CREATE_USER.ToString(), Text = Permission.CREATE_USER.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.UPDATE_USER.ToString(), Text = Permission.UPDATE_USER.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.VIEW_USER.ToString(), Text = Permission.VIEW_USER.ToString(), Selected = false }
+                        GetPermissionCheckBoxItem(Permission.CREATE_USER, permissions),
+                        GetPermissionCheckBoxItem(Permission.UPDATE_USER, permissions),
+                        GetPermissionCheckBoxItem(Permission.VIEW_USER, permissions)
                     }
                 },
                 new PermissionSection
@@ -50,9 +54,9 @@ namespace PayMeForYou.Backend.Library.Services
                     SectionName = "Role",
                     Permissions = new List<CustomCheckBoxItem>
                     {
-                        new CustomCheckBoxItem { Id = Permission.CREATE_ROLE.ToString(), Text = Permission.CREATE_ROLE.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.UPDATE_ROLE.ToString(), Text = Permission.UPDATE_ROLE.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.VIEW_ROLE.ToString(), Text = Permission.VIEW_ROLE.ToString(), Selected = false }
+                        GetPermissionCheckBoxItem(Permission.CREATE_ROLE, permissions),
+                        GetPermissionCheckBoxItem(Permission.UPDATE_ROLE, permissions),
+                        GetPermissionCheckBoxItem(Permission.VIEW_ROLE, permissions)
                     }
                 },
                 new PermissionSection
@@ -60,15 +64,15 @@ namespace PayMeForYou.Backend.Library.Services
                     SectionName = "Transaction",
                     Permissions = new List<CustomCheckBoxItem>
                     {
-                        new CustomCheckBoxItem { Id = Permission.UPDATE_TRANSACTION.ToString(), Text = Permission.UPDATE_TRANSACTION.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.VIEW_FUNDOUT_TRANSACTION.ToString(), Text = Permission.VIEW_FUNDOUT_TRANSACTION.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.VIEW_FUNDIN_TRANSACTION.ToString(), Text = Permission.VIEW_FUNDIN_TRANSACTION.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.MANUAL_CREATE_FUNDIN_TRANSACTION.ToString(), Text = Permission.MANUAL_CREATE_FUNDIN_TRANSACTION.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.VIEW_BANK_TRANSACTION_STATEMENT.ToString(), Text = Permission.VIEW_BANK_TRANSACTION_STATEMENT.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.VIEW_SETTLEMENT_TRANSACTION.ToString(), Text = Permission.VIEW_SETTLEMENT_TRANSACTION.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.UPDATE_SETTLEMENT_TRANSACTION.ToString(), Text = Permission.UPDATE_SETTLEMENT_TRANSACTION.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.CREATE_SETTLEMENT_TRANSACTION.ToString(), Text = Permission.CREATE_SETTLEMENT_TRANSACTION.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.VIEW_TOP_UP_TRANSACTION.ToString(), Text = Permission.VIEW_TOP_UP_TRANSACTION.ToString(), Selected = false }
+                        GetPermissionCheckBoxItem(Permission.UPDATE_TRANSACTION, permissions),
+                        GetPermissionCheckBoxItem(Permission.VIEW_FUNDOUT_TRANSACTION, permissions),
+                        GetPermissionCheckBoxItem(Permission.VIEW_FUNDIN_TRANSACTION, permissions),
+                        GetPermissionCheckBoxItem(Permission.MANUAL_CREATE_FUNDIN_TRANSACTION, permissions),
+                        GetPermissionCheckBoxItem(Permission.VIEW_BANK_TRANSACTION_STATEMENT, permissions),
+                        GetPermissionCheckBoxItem(Permission.VIEW_SETTLEMENT_TRANSACTION, permissions),
+                        GetPermissionCheckBoxItem(Permission.UPDATE_SETTLEMENT_TRANSACTION, permissions),
+                        GetPermissionCheckBoxItem(Permission.CREATE_SETTLEMENT_TRANSACTION, permissions),
+                        GetPermissionCheckBoxItem(Permission.VIEW_TOP_UP_TRANSACTION, permissions)
                     }
                 },
                 new PermissionSection
@@ -76,11 +80,11 @@ namespace PayMeForYou.Backend.Library.Services
                     SectionName = "Report",
                     Permissions = new List<CustomCheckBoxItem>
                     {
-                        new CustomCheckBoxItem { Id = Permission.VIEW_SETTLEMENT_REPORT.ToString(), Text = Permission.VIEW_SETTLEMENT_REPORT.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.VIEW_FUNDOUT_REPORT.ToString(), Text = Permission.VIEW_FUNDOUT_REPORT.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.VIEW_FUNDIN_REPORT.ToString(), Text = Permission.VIEW_FUNDIN_REPORT.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.VIEW_MERCHANT_SUMMARY_REPORT.ToString(), Text = Permission.VIEW_MERCHANT_SUMMARY_REPORT.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.VIEW_FUND_STATEMENT.ToString(), Text = Permission.VIEW_FUND_STATEMENT.ToString(), Selected = false }
+                        GetPermissionCheckBoxItem(Permission.VIEW_SETTLEMENT_REPORT, permissions),
+                        GetPermissionCheckBoxItem(Permission.VIEW_FUNDOUT_REPORT, permissions),
+                        GetPermissionCheckBoxItem(Permission.VIEW_FUNDIN_REPORT, permissions),
+                        GetPermissionCheckBoxItem(Permission.VIEW_MERCHANT_SUMMARY_REPORT, permissions),
+                        GetPermissionCheckBoxItem(Permission.VIEW_FUND_STATEMENT, permissions)
                     }
                 },
                 new PermissionSection
@@ -88,14 +92,31 @@ namespace PayMeForYou.Backend.Library.Services
                     SectionName = "Administrator",
                     Permissions = new List<CustomCheckBoxItem>
                     {
-                        new CustomCheckBoxItem { Id = Permission.TOP_UP.ToString(), Text = Permission.TOP_UP.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.BALANCE_ADJUSTMENT.ToString(), Text = Permission.BALANCE_ADJUSTMENT.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.VIEW_FUND_ACCOUNT.ToString(), Text = Permission.VIEW_FUND_ACCOUNT.ToString(), Selected = false },
-                        new CustomCheckBoxItem { Id = Permission.VIEW_TESTING_TOOL.ToString(), Text = Permission.VIEW_TESTING_TOOL.ToString(), Selected = false }
+                        GetPermissionCheckBoxItem(Permission.TOP_UP, permissions),
+                        GetPermissionCheckBoxItem(Permission.BALANCE_ADJUSTMENT, permissions),
+                        GetPermissionCheckBoxItem(Permission.VIEW_FUND_ACCOUNT, permissions),
+                        GetPermissionCheckBoxItem(Permission.VIEW_TESTING_TOOL, permissions)
                     }
                 }
             };
         }
+        private CustomCheckBoxItem GetPermissionCheckBoxItem(Permission permission, string permissions) => new CustomCheckBoxItem { Id = permission.ToString(), Text = permission.ToString(), Selected = permissions.Contains($",{permission.ToString()},") };
+        private string GetPermissions(List<PermissionSection> permissionSections)
+        {
+            var permissionList = new List<string>();
+            foreach (var section in permissionSections)
+                permissionList.AddRange(section.Permissions.Where(p => p.Selected).Select(p => p.Id));
+
+            return string.Join(',', permissionList);
+        }
+        #endregion
+
+        #region Get
+        public async Task<RoleView> GetRoleAsync(int id) => JsonConvert.DeserializeObject<RoleView>(await _requestHelper.SendRequestAsync($"{_baseUrl}/{id}", HttpMethod.Get));
+        public async Task<List<RoleView>> GetRolesAsync() => JsonConvert.DeserializeObject<List<RoleView>>(await _requestHelper.SendRequestAsync(_baseUrl, HttpMethod.Get));
+        #endregion
+
+        #region Create
         public async Task CreateRoleAsync(CreateRoleView view)
         {
             var request = new CreateRoleRequest
@@ -105,21 +126,23 @@ namespace PayMeForYou.Backend.Library.Services
                 Description = view.Description,
                 CreatedBy = "Klen"
             };
-
-            _httpClientHelper.Url = "api/role";
-            _httpClientHelper.ContentType = HttpEntity.ContentType.Application_Json;
-            _httpClientHelper.FormMethod = HttpMethod.Post;
-            _httpClientHelper.FormContent = new StringContent(JsonConvert.SerializeObject(request, Formatting.None));
-
-            await _httpClientHelper.SubmitAsync();
+            await _requestHelper.SendRequestAsync(_baseUrl, HttpMethod.Post, JsonConvert.SerializeObject(request, Formatting.None));
         }
-        private string GetPermissions(List<PermissionSection> permissionSections)
+        #endregion
+
+        #region Update
+        public async Task UpdateRoleAsync(UpdateRoleView view)
         {
-            var permissionList = new List<string>();
-            foreach (var section in permissionSections)
-                permissionList.AddRange(section.Permissions.Where(p => p.Selected).Select(p => p.Id));
-
-            return string.Join(',', permissionList);
+            var request = new UpdateRoleRequest
+            {
+                Id = view.Id,
+                RoleName = view.RoleName,
+                Permissions = GetPermissions(view.PermissionSections),
+                Description = view.Description,
+                UpdatedBy = "Klen"
+            };
+            await _requestHelper.SendRequestAsync(_baseUrl, HttpMethod.Put, JsonConvert.SerializeObject(request, Formatting.None));
         }
+        #endregion
     }
 }

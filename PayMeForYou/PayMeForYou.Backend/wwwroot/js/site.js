@@ -24,23 +24,28 @@ function switchSideBarItemDetail(trigger) {
     }
 }
 
-$(".partial-load").click(event => {
+$(".partial-load").click(() => {
+    partialLoad(true);
+});
+
+function partialLoad(isSwitch) {
     event.preventDefault();
     var url = $(event.target).attr("href");
     $('#divMainBody').load(url);
-    if ($("#btnMenu").css("display") === 'block') {
+    if (isSwitch && $("#btnMenu").css("display") === 'block') {
         switchMenu();
     }
-});
+    document.documentElement.scrollTop = 0;
+}
 
 function submitAjax(form, successEvent, errorEvent) {
     event.preventDefault();
     $.ajax({
         url: form.attr('action'),
         type: form.attr('method'),
-        data: form.serialize(), // data to be submitted
+        data: form.serialize(),
         success: function(response) {
-            successEvent(response); // do what you like with the response
+            successEvent(response);
         },
         error: function(response) {
             errorEvent(response);

@@ -16,14 +16,14 @@ namespace PayMeForYou.Backend.Controllers
         {
             _httpClientHelper = httpClientHelper;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            //_httpClientHelper.Url = "api/role";
-            //_httpClientHelper.ContentType = HttpEntity.ContentType.Application_Json;
-            //_httpClientHelper.FormMethod = HttpMethod.Get;
+            _httpClientHelper.Url = "api/role";
+            _httpClientHelper.ContentType = HttpEntity.ContentType.Application_Json;
+            _httpClientHelper.FormMethod = HttpMethod.Get;
 
-            //using var resp = await _httpClientHelper.SubmitAsync();
-            //var content = await _httpClientHelper.ReadResponseContentAsStringAsync(resp);
+            using var resp = await _httpClientHelper.SubmitAsync();
+            var content = await _httpClientHelper.ReadResponseContentAsStringAsync(resp);
 
             return PartialView();
         }

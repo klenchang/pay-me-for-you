@@ -9,7 +9,7 @@ namespace PayMeForYou.Api.Service.Library.Services.Interface
     {
         public Task<List<RoleView>> GetRolesAsync();
         public Task<int> CreateRoleAsync(CreateRoleRequest roleView);
-        public Task<int> UpdateRoleAsync(UpdateRoleView roleView);
+        public Task<int> UpdateRoleAsync(UpdateRoleRequest roleView);
         public Task<RoleView> GetRoleAsync(int roleId);
     }
 }

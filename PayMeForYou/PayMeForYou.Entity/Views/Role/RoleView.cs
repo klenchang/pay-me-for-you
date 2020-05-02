@@ -1,4 +1,6 @@
-﻿namespace PayMeForYou.Entity.Views.Role
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PayMeForYou.Entity.Views.Role
 {
     public class RoleView
     {

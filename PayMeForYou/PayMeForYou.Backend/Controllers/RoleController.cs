@@ -14,9 +14,11 @@ namespace PayMeForYou.Backend.Controllers
         }
 
         [HttpGet]
-        public IActionResult Management()
+        public async Task<IActionResult> Management()
         {
-            return PartialView();
+            var view = await _service.GetRolesAsync();
+
+            return PartialView(view);
         }
 
         [HttpGet]
@@ -35,7 +37,31 @@ namespace PayMeForYou.Backend.Controllers
         {
             await _service.CreateRoleAsync(view);
 
-            return Content("success");
+            return Content("create successfully");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Update(int id)
+        {
+            var role = await _service.GetRoleAsync(id);
+
+            var view = new UpdateRoleView
+            {
+                Id = role.Id,
+                Description = role.Description,
+                RoleName = role.RoleName,
+                PermissionSections = _service.GetAllPermissionSections(role.Permissions)
+            };
+
+            return PartialView(view);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(UpdateRoleView view)
+        {
+            await _service.UpdateRoleAsync(view);
+
+            return Content("update successfully");
         }
     }
 }

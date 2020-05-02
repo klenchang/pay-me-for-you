@@ -2,8 +2,10 @@
 
 namespace PayMeForYou.Entity.RequestModules.Role
 {
-    public class CreateRoleRequest
+    public class UpdateRoleRequest
     {
+        [Required]
+        public int Id { get; set; }
         [Required]
         [StringLength(30)]
         public string RoleName { get; set; }
@@ -12,6 +14,6 @@ namespace PayMeForYou.Entity.RequestModules.Role
         public string Permissions { get; set; }
         [Required]
         [StringLength(30)]
-        public string CreatedBy { get; set; }
+        public string UpdatedBy { get; set; }
     }
 }
