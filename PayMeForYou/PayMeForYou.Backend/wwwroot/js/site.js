@@ -16,11 +16,12 @@ function switchSideBarItemDetail(trigger) {
     var x = trigger.nextElementSibling;
     if (x.className.indexOf("w3-show") == -1) {
         x.className += " w3-show";
-        x.previousElementSibling.className += " w3-green";
+        trigger.className += " w3-green";
+        trigger.innerHTML = trigger.innerHTML.replace("keyboard_arrow_up", "keyboard_arrow_down");
     } else {
         x.className = x.className.replace(" w3-show", "");
-        x.previousElementSibling.className =
-            x.previousElementSibling.className.replace(" w3-green", "");
+        trigger.className = trigger.className.replace(" w3-green", "");
+        trigger.innerHTML = trigger.innerHTML.replace("keyboard_arrow_down", "keyboard_arrow_up");
     }
 }
 

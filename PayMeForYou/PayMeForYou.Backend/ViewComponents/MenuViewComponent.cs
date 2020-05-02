@@ -16,8 +16,7 @@ namespace PayMeForYou.Backend.ViewComponents
                 new MenuViewModel { CategoryName = "User", ControllerName = "user", ActionName = "create", FunctionName = "Create", IsRoot = false },
                 new MenuViewModel { CategoryName = "User", ControllerName = "user", ActionName = "customercontrol", FunctionName = "Customer Control", IsRoot = false },
                 new MenuViewModel { CategoryName = "Role", ControllerName = "role", ActionName = "management", FunctionName = "Management", IsRoot = false },
-                new MenuViewModel { CategoryName = "Role", ControllerName = "role", ActionName = "create", FunctionName = "Create", IsRoot = false },
-                new MenuViewModel { CategoryName = "Test", ControllerName = "test", ActionName = "index", FunctionName = "", IsRoot = true },
+                new MenuViewModel { CategoryName = "Role", ControllerName = "role", ActionName = "create", FunctionName = "Create", IsRoot = false }
             });
             return View(model);
         }
