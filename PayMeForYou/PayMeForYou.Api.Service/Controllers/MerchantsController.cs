@@ -9,7 +9,7 @@ namespace PayMeForYou.Api.Service.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class MerchantController : ControllerBase
+    public class MerchantsController : ControllerBase
     {
         [HttpGet]
         [Route("name/{id?}")]

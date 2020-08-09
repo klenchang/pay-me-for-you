@@ -8,10 +8,10 @@ namespace PayMeForYou.Api.Service.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RoleController : ControllerBase
+    public class RolesController : ControllerBase
     {
         private readonly IRoleService _service;
-        public RoleController(IRoleService roleService)
+        public RolesController(IRoleService roleService)
         {
             _service = roleService;
         }

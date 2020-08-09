@@ -9,7 +9,7 @@ namespace PayMeForYou.Api.Service.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AffiliateController : ControllerBase
+    public class AffiliatesController : ControllerBase
     {
 
     }
