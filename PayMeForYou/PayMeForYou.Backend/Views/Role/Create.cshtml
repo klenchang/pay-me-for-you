@@ -43,6 +43,6 @@
     $("form").submit(function () {
         var successEvent = response => { alert(response); $('#divMainBody').load("/role/management"); };
         var errorEvent = response => alert(response);
-        submitAjax($(this), successEvent, errorEvent);
+        ajaxUtility.formSubmit($(this), successEvent, errorEvent);
     });
 </script>

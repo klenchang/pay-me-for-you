@@ -14,7 +14,7 @@ namespace PayMeForYou.Backend.Library.Services
 {
     public class RoleService : IRoleService
     {
-        private const string _baseUrl = "api/role";
+        private const string BaseUrl = "api/roles";
         private readonly RequestHelper _requestHelper;
         public RoleService(RequestHelper requestHelper)
         {
@@ -112,8 +112,9 @@ namespace PayMeForYou.Backend.Library.Services
         #endregion
 
         #region Get
-        public async Task<RoleView> GetRoleAsync(int id) => JsonConvert.DeserializeObject<RoleView>(await _requestHelper.SendRequestAsync($"{_baseUrl}/{id}", HttpMethod.Get));
-        public async Task<List<RoleView>> GetRolesAsync() => JsonConvert.DeserializeObject<List<RoleView>>(await _requestHelper.SendRequestAsync(_baseUrl, HttpMethod.Get));
+        public async Task<RoleView> GetRoleAsync(int id) => JsonConvert.DeserializeObject<RoleView>(await _requestHelper.SendRequestAsync($"{BaseUrl}/{id}", HttpMethod.Get));
+        public async Task<List<RoleView>> GetRolesAsync(PagenationSetting pagenationSetting) 
+            => JsonConvert.DeserializeObject<List<RoleView>>(await _requestHelper.SendRequestAsync($"{BaseUrl}?PageIndex={pagenationSetting.PageIndex}&PageSize={pagenationSetting.PageSize}", HttpMethod.Get));
         #endregion
 
         #region Create
@@ -126,7 +127,7 @@ namespace PayMeForYou.Backend.Library.Services
                 Description = view.Description,
                 CreatedBy = "Klen"
             };
-            await _requestHelper.SendRequestAsync(_baseUrl, HttpMethod.Post, JsonConvert.SerializeObject(request, Formatting.None));
+            await _requestHelper.SendRequestAsync(BaseUrl, HttpMethod.Post, JsonConvert.SerializeObject(request, Formatting.None));
         }
         #endregion
 
@@ -141,7 +142,7 @@ namespace PayMeForYou.Backend.Library.Services
                 Description = view.Description,
                 UpdatedBy = "Klen"
             };
-            await _requestHelper.SendRequestAsync(_baseUrl, HttpMethod.Put, JsonConvert.SerializeObject(request, Formatting.None));
+            await _requestHelper.SendRequestAsync(BaseUrl, HttpMethod.Put, JsonConvert.SerializeObject(request, Formatting.None));
         }
         #endregion
     }

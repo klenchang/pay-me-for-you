@@ -39,17 +39,31 @@ function partialLoad(isSwitch) {
     document.documentElement.scrollTop = 0;
 }
 
-function submitAjax(form, successEvent, errorEvent) {
-    event.preventDefault();
-    $.ajax({
-        url: form.attr('action'),
-        type: form.attr('method'),
-        data: form.serialize(),
-        success: function(response) {
-            successEvent(response);
-        },
-        error: function(response) {
-            errorEvent(response);
-        }
-    });
+var ajaxUtility = {
+    formSubmit: function (form, successEvent, errorEvent) {
+        event.preventDefault();
+        this.send(form.attr('action'), form.attr('method'), form.serialize(), successEvent, errorEvent);
+    },
+    send: (url, method, data, successEvent, errorEvent) => {
+        $.ajax({
+            url: url,
+            type: method,
+            data: data,
+            success: function (response) {
+                successEvent(response);
+            },
+            error: function (response) {
+                errorEvent(response);
+            }
+        });
+    }
+}
+
+function searchTableData() {
+    var container = $("#searchResult");
+    var url = container.data("path");
+    var pageSize = $("#pageSize").length != 0 ? $("#pageSize").val() : 10;
+    var pageIndex = $("#pageIndex").length != 0 ? $("#pageIndex").val() : 1;
+    var pagenationSetting = { "PageSize": pageSize, "PageIndex": pageIndex };
+    ajaxUtility.send(url, "get", pagenationSetting, function (response) { container.html(response) }, function (response) { console.log(response) });
 }

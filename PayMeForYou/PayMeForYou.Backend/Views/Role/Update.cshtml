@@ -45,6 +45,6 @@
         form.attr("method", "put");
         var successEvent = response => { alert(response); $('#divMainBody').load("/role/management"); };
         var errorEvent = response => alert(response);
-        submitAjax(form, successEvent, errorEvent);
+        ajaxUtility.formSubmit(form, successEvent, errorEvent);
     });
 </script>

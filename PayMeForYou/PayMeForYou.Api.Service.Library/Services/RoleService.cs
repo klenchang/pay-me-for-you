@@ -1,5 +1,6 @@
 ﻿using PayMeForYou.Api.Service.Library.Repositories.Interface;
 using PayMeForYou.Api.Service.Library.Services.Interface;
+using PayMeForYou.Entity.Entities;
 using PayMeForYou.Entity.RepositoryModules;
 using PayMeForYou.Entity.RequestModules.Role;
 using PayMeForYou.Entity.Views.Role;
@@ -33,9 +34,9 @@ namespace PayMeForYou.Api.Service.Library.Services
             var role = await _repository.GetRoleAsync(roleId);
             return role == null ? null : ConvertToView(role, 1);
         }
-        public async Task<List<RoleView>> GetRolesAsync()
+        public async Task<List<RoleView>> GetRolesAsync(PagenationSetting pagenationSetting)
         {
-            var roles = await _repository.GetRolesAsync();
+            var roles = await _repository.GetRolesAsync(pagenationSetting);
             var list = new List<RoleView>();
             for (int i = 1; i <= roles.Count; i++)
                 list.Add(ConvertToView(roles[i - 1], i));

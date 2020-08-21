@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PayMeForYou.Api.Service.Library.Services.Interface;
+using PayMeForYou.Entity.Entities;
 using PayMeForYou.Entity.RequestModules.Role;
-using PayMeForYou.Entity.Views.Role;
 using System.Threading.Tasks;
 
 namespace PayMeForYou.Api.Service.Controllers
@@ -17,9 +17,9 @@ namespace PayMeForYou.Api.Service.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetRolesAsync()
+        public async Task<IActionResult> GetRolesAsync([FromQuery] PagenationSetting pagenationSetting)
         {
-            var list = await _service.GetRolesAsync();
+            var list = await _service.GetRolesAsync(pagenationSetting);
             if (list.Count == 0)
                 return NoContent();
             else

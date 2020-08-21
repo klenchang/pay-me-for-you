@@ -1,0 +1,45 @@
+﻿@model PaginationViewModel;
+
+<div class="w3-padding">
+    <div class="w3-col s4 w3-cell-middle">Total:@Model.TotalRecords records</div>
+    <div class="w3-col s8 w3-right-align">
+        <span class="no-wrap">
+            Size:
+            @{
+                var sizeArray = new[] { 5, 10, 15, 20, 30, 50 };
+                <select class="w3-border w3-padding-small" name="pageSize" id="pageSize" onchange="searchTableData()">
+                    @foreach (var size in sizeArray)
+                    {
+                        if (size == Model.PageSize)
+                        {
+                            <option value="@size" selected>@size</option>
+                        }
+                        else
+                        {
+                            <option value="@size">@size</option>
+                        }
+                    }
+                </select>
+            }
+        </span>
+        <span class="no-wrap">
+            Page:
+            @{
+                var pageCount = Math.Ceiling((decimal)(Model.TotalRecords / Model.PageSize));
+                <select class="w3-border w3-padding-small" name="pageIndex" id="pageIndex" onchange="searchTableData()">
+                    @for (int i = 1; i <= pageCount; i++)
+                    {
+                        if (i == Model.PageIndex)
+                        {
+                            <option value="@i" selected>@i</option>
+                        }
+                        else
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    }
+                </select>
+            }
+        </span>
+    </div>
+</div>

@@ -25,9 +25,9 @@ namespace PayMeForYou.Api.Service.Library.Repositories
             string cmdText = @"INSERT INTO role (role_name, `description`, permissions, created_by, created_time, updated_by, updated_time)
                                VALUES (@role_name, @description, @permissions, @created_by, @created_time, null, null);
                                SELECT LAST_INSERT_ID();";
-            
-            var parameters = new List<MySqlParameter> 
-            { 
+
+            var parameters = new List<MySqlParameter>
+            {
                 new MySqlParameter("role_name", MySqlDbType.VarChar) { Value = role.RoleName, Direction = ParameterDirection.Input },
                 new MySqlParameter("description", MySqlDbType.VarChar) { Value = role.Description, Direction = ParameterDirection.Input },
                 new MySqlParameter("permissions", MySqlDbType.VarChar) { Value = role.Permissions, Direction = ParameterDirection.Input },
@@ -67,7 +67,7 @@ namespace PayMeForYou.Api.Service.Library.Repositories
 
             return roles.FirstOrDefault();
         }
-        public async Task<List<Role>> GetRolesAsync() => await GetRolesAsync(null);
+        public async Task<List<Role>> GetRolesAsync(PagenationSetting pagenationSetting) => await GetRolesAsync(null, pagenationSetting);
         private Role RoleMapping(IDataReader reader)
         {
             return new Role
@@ -82,12 +82,14 @@ namespace PayMeForYou.Api.Service.Library.Repositories
                 UpdatedTime = DateTime.TryParse(reader["updated_time"]?.ToString(), out DateTime utcUT) ? DateTime.SpecifyKind(utcUT, DateTimeKind.Utc).ToLocalTime() : DateTime.Now,
             };
         }
-        private async Task<List<Role>> GetRolesAsync(IDbDataParameter[] parameters = null)
+        private async Task<List<Role>> GetRolesAsync(IDbDataParameter[] parameters = null, PagenationSetting pagenationSetting = null)
         {
             var sbCmdText = new StringBuilder("SELECT id, role_name, `description`, permissions, created_by, created_time, updated_by, updated_time FROM role");
             if (parameters != null)
                 for (int i = 0; i < parameters.Length; i++)
                     sbCmdText.AppendFormat(" {0} {1} = @{1} ", i == 0 ? "WHERE" : "AND", parameters[i].ParameterName);
+            if (pagenationSetting != null)
+                sbCmdText.AppendFormat(" limit {0},{1}", pagenationSetting.StartIndex, pagenationSetting.PageSize);
             sbCmdText.Append(";");
             var cmdText = MySqlDBUtility.GetSelectNoLockCmdText(sbCmdText.ToString());
 

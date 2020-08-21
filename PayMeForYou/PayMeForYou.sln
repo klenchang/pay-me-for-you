@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayMeForYou.Utility", "PayM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayMeForYou.Backend", "PayMeForYou.Backend\PayMeForYou.Backend.csproj", "{7ED43AAB-C3EA-49A7-A203-F5F26F75291C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayMeForYou.Backend.Library", "PayMeForYou.Backend.Library\PayMeForYou.Backend.Library.csproj", "{0EE3744B-9757-48FB-B101-1CB854A03256}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayMeForYou.Backend.Library", "PayMeForYou.Backend.Library\PayMeForYou.Backend.Library.csproj", "{0EE3744B-9757-48FB-B101-1CB854A03256}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

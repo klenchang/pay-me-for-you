@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PayMeForYou.Backend.Library.Services.Interface;
+using PayMeForYou.Entity.Entities;
 using PayMeForYou.Entity.Views.Role;
 using System.Threading.Tasks;
 
@@ -14,11 +15,9 @@ namespace PayMeForYou.Backend.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Management()
+        public IActionResult Management()
         {
-            var view = await _service.GetRolesAsync();
-
-            return PartialView(view);
+            return PartialView();
         }
 
         [HttpGet]
@@ -62,6 +61,14 @@ namespace PayMeForYou.Backend.Controllers
             await _service.UpdateRoleAsync(view);
 
             return Content("update successfully");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Search(PagenationSetting pagenationSetting)
+        {
+            var view = await _service.GetRolesAsync(pagenationSetting);
+
+            return PartialView(view);
         }
     }
 }

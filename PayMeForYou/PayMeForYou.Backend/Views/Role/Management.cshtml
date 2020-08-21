@@ -1,36 +1,15 @@
-﻿@using PayMeForYou.Entity.Views.Role;
-@model List<RoleView>;
-
-<div class="w3-row">
+﻿<div class="w3-row">
     <div class="w3-quarter w3-container"></div>
     <div class="w3-half">
         <div class="w3-container">
             <a class="w3-btn w3-blue-grey w3-section" asp-controller="role" asp-action="create" onclick="partialLoad();">Create</a>
-            @if (Model != null && Model.Count > 0)
-            {
-                <div class="w3-responsive">
-                    <table class="w3-table-all w3-hoverable">
-                        <tr>
-                            <th></th>
-                            <th>Role Name</th>
-                            <th>Description</th>
-                            <th>Action</th>
-                        </tr>
-                        @foreach (var row in Model)
-                        {
-                            <tr>
-                                <td>@row.RowNo</td>
-                                <td>@row.RoleName</td>
-                                <td>@row.Description</td>
-                                <td>
-                                    <a class="w3-button w3-hover-text-light-grey material-icons w3-row-padding" onclick="partialLoad();" title="edit" asp-controller="role" asp-action="update" asp-route-id="@row.Id">create</a>
-                                </td>
-                            </tr>
-                        }
-                    </table>
-                </div>
-            }
+            <div id="searchResult" data-path="role/search"></div>
         </div>
     </div>
     <div class="w3-quarter w3-container"></div>
 </div>
+<script type="text/javascript">
+    $("#searchResult").ready(function () {
+        searchTableData();
+    });
+</script>
